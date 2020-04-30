@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h1>This is a todo application</h1>
+        <input id="todo-text" type="text" placeholder="serach todo">
+        <div class="Container">
+            <label>
+                <input type="checkbox" id="hide-completed">
+                Hide Completed
+            </label>
+        </div>
+        <div class="Container" id="todos">
+            
+        </div>
+
+        <form id="new-to-do" action="">
+            <div class="form-group">
+                <input type="text" placeholder="Something to do" name="text">
+                <button type="submit" class="btn btn-primary">Add ToDo</button>
+            </div>
+        </form>
+        <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+        <script src="todo-function.js"></script>
+        <script src="todo-app.js"></script>
+    </body>
+</html>

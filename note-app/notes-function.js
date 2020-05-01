@@ -1,3 +1,4 @@
+'use strict' //catches errors which are otherwise ignored by js processors
 //read existing notes from localStorage
 
 const getSavedNotes = () => {

@@ -49,6 +49,36 @@ window.addEventListener('keypress',(event) => {
     game1.makeGuess(guess)
     puzzleEl.textContent = game1.getPuzzle()
     guessesEl.textContent = game1.getStatusMessage()
-    //console.log(game1.remainingGuesses)
-    //console.log(game1.status)
+    
+})
+
+
+
+
+//function called with a callback function 
+// getPuzzle((error, puzzle) => {
+
+//     if(error){
+//         console.log(`Error: ${error}`)
+//     }
+//     else{
+//         console.log(puzzle)
+//     }
+// })
+
+//Function with a promise consumer 
+getPuzzle('3').then((puzzle) =>{
+    console.log(puzzle)
+}, (err)=>{
+    console.log(err)
+})
+// const puzzle = getPuzzleSync()
+// console.log(puzzle)
+// console.log('printing in sync')
+
+//getting the country name asynchronously
+getCountryName("JP").then((countryDetails) => {
+    console.log(countryDetails)
+}, (error)=>{
+    console.log(`Error: ${error}`)
 })

@@ -1,2 +1,2 @@
-# Javascript-bootcamp
+# Practing javascript basics
  

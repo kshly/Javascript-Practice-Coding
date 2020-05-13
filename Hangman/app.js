@@ -67,18 +67,29 @@ window.addEventListener('keypress',(event) => {
 // })
 
 //Function with a promise consumer 
-getPuzzle('3').then((puzzle) =>{
-    console.log(puzzle)
-}, (err)=>{
-    console.log(err)
-})
-// const puzzle = getPuzzleSync()
-// console.log(puzzle)
-// console.log('printing in sync')
+getPuzzle('8')
 
-//getting the country name asynchronously
-getCountryName("JP").then((countryDetails) => {
-    console.log(countryDetails)
-}, (error)=>{
-    console.log(`Error: ${error}`)
-})
+
+// // const puzzle = getPuzzleSync()
+// // console.log(puzzle)
+// // console.log('printing in sync')
+
+// //getting the country name asynchronously
+// getCountryName("JP").then((countryDetails) => {
+//     console.log(countryDetails)
+// }, (error)=>{
+//     console.log(`Error: ${error}`)
+// })
+
+// fetch('http://puzzle.mead.io/puzzle', {}).then((response) =>{
+//     if(response.status === 200){
+//         return response.json()
+//     }
+//     else{
+//         throw new Error('Unable to fetch data')
+//     }
+// }).then((data) =>{
+//     console.log(data.puzzle)
+// }).catch((error) =>{
+//     console.log(error)
+// })

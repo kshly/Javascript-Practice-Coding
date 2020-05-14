@@ -51,34 +51,6 @@ const getDataPuzzle = (wordCount) =>{
 }
 
 
-
-// const getCountryName = (countryCode) => new Promise((resolve , reject) => {
-//     const request = new XMLHttpRequest()
-
-//     request.open('GET','http://restcountries.eu/rest/v2/all')
-//     request.send()
-
-//     request.addEventListener('readystatechange', (event) => {
-//         if(event.target.readyState === 4 && event.target.status === 200){
-        
-//             const data = JSON.parse(event.target.responseText)
-            
-//             const country = data.find((country) => {
-//                 return country.alpha2Code === countryCode
-//             })
-//             const countryDetails = `${country.name}\n`+
-//             `${country.population}\n`+
-//             `${country.currencies[0].name}\n`+
-//             `${country.latlng[0]}\n`+
-//             `${country.latlng[1]}`
-//             resolve(countryDetails)
-//         }
-//         else if(event.target.readyState === 4){
-//             reject("Something went wrong" , undefined)
-//         }
-//     })
-// })
-
 const getCountryName = (countryCode) =>{
     return fetch('http://restcountries.eu/rest/v2/all', {}).then((response) =>{
         if(response.status === 200)
@@ -98,9 +70,25 @@ const getCountryName = (countryCode) =>{
             `${country.latlng[0]}\n`+
             `${country.latlng[1]}`
         
-        console.log(countryDetails)
+        return countryDetails
 
     }).catch((error) =>{
-        console.log(error)
+        return error
+    })
+}
+
+const getLocationDetails = () =>{
+    const token = '95bfa784799e9e'
+    fetch(`http://ipinfo.io/json?token=${token}`, {}).then((response) =>{
+        if(response.status === 200){
+            return response.json()
+        }
+        else{
+            throw new Error(`ErrorCode: ${response.status} has occured`)
+        }
+    }).then((data) =>{
+        return (`${data.city}\n${data.region}\n${data.country}\n${data.timezone}`)
+    }).catch((error) =>{
+        return error
     })
 }

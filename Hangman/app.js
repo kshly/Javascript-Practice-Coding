@@ -74,27 +74,14 @@ getDataPuzzle('3').then((puzzle) =>{
 })
 
 
-getCountryName("IN")
-// // const puzzle = getPuzzleSync()
-// // console.log(puzzle)
-// // console.log('printing in sync')
+getCountryName("JP").then((countryDetails) => {
+    console.log(countryDetails)
+}, (error)=>{
+    console.log(`Error: ${error}`)
+})
 
-// //getting the country name asynchronously
-// getCountryName("JP").then((countryDetails) => {
-//     console.log(countryDetails)
-// }, (error)=>{
-//     console.log(`Error: ${error}`)
-// })
-
-// fetch('http://puzzle.mead.io/puzzle', {}).then((response) =>{
-//     if(response.status === 200){
-//         return response.json()
-//     }
-//     else{
-//         throw new Error('Unable to fetch data')
-//     }
-// }).then((data) =>{
-//     console.log(data.puzzle)
-// }).catch((error) =>{
-//     console.log(error)
-// })
+getLocationDetails().then((locationDetails)=>{
+    console.log(locationDetails)
+}).catch((error) =>{
+    console.log(error)
+})

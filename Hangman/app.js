@@ -67,9 +67,14 @@ window.addEventListener('keypress',(event) => {
 // })
 
 //Function with a promise consumer 
-getPuzzle('8')
+getDataPuzzle('3').then((puzzle) =>{
+    console.log(puzzle)
+}).catch((error) =>{
+    console.log(error)
+})
 
 
+getCountryName("IN")
 // // const puzzle = getPuzzleSync()
 // // console.log(puzzle)
 // // console.log('printing in sync')

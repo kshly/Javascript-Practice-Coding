@@ -37,45 +37,70 @@
 
 
 //using fetch api 
-const getPuzzle = (wordCount) =>{
-    fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`,{}).then((response) =>{
+const getDataPuzzle = (wordCount) =>{
+    return fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`,{}).then((response) =>{
         if(response.status === 200)
             return response.json()
         else
-            throw new Error('Something went wrong!!')
+            throw new Error(`ErrorCode: ${response.status} has occured`)
     }).then((data) =>{
-        console.log(data.puzzle)
+        return data.puzzle
     }).catch((error) =>{
-        console.log(error)
+        return error
     })
 }
 
 
 
-const getCountryName = (countryCode) => new Promise((resolve , reject) => {
-    const request = new XMLHttpRequest()
+// const getCountryName = (countryCode) => new Promise((resolve , reject) => {
+//     const request = new XMLHttpRequest()
 
-    request.open('GET','http://restcountries.eu/rest/v2/all')
-    request.send()
+//     request.open('GET','http://restcountries.eu/rest/v2/all')
+//     request.send()
 
-    request.addEventListener('readystatechange', (event) => {
-        if(event.target.readyState === 4 && event.target.status === 200){
+//     request.addEventListener('readystatechange', (event) => {
+//         if(event.target.readyState === 4 && event.target.status === 200){
         
-            const data = JSON.parse(event.target.responseText)
+//             const data = JSON.parse(event.target.responseText)
             
-            const country = data.find((country) => {
-                return country.alpha2Code === countryCode
-            })
-            const countryDetails = `${country.name}\n`+
+//             const country = data.find((country) => {
+//                 return country.alpha2Code === countryCode
+//             })
+//             const countryDetails = `${country.name}\n`+
+//             `${country.population}\n`+
+//             `${country.currencies[0].name}\n`+
+//             `${country.latlng[0]}\n`+
+//             `${country.latlng[1]}`
+//             resolve(countryDetails)
+//         }
+//         else if(event.target.readyState === 4){
+//             reject("Something went wrong" , undefined)
+//         }
+//     })
+// })
+
+const getCountryName = (countryCode) =>{
+    return fetch('http://restcountries.eu/rest/v2/all', {}).then((response) =>{
+        if(response.status === 200)
+            return response.json()
+        else{
+            throw new Error(`ErrorCode: ${response.status} has occured`)
+        }
+
+    }).then((data) =>{
+        const country = data.find((country) =>{
+            return country.alpha2Code === countryCode
+        })
+
+        const countryDetails = `${country.name}\n`+
             `${country.population}\n`+
             `${country.currencies[0].name}\n`+
             `${country.latlng[0]}\n`+
             `${country.latlng[1]}`
-            resolve(countryDetails)
-        }
-        else if(event.target.readyState === 4){
-            reject("Something went wrong" , undefined)
-        }
-    })
-})
+        
+        console.log(countryDetails)
 
+    }).catch((error) =>{
+        console.log(error)
+    })
+}

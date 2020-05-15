@@ -79,7 +79,7 @@ const getCountryName = (countryCode) =>{
 
 const getLocationDetails = () =>{
     const token = '95bfa784799e9e'
-    fetch(`http://ipinfo.io/json?token=${token}`, {}).then((response) =>{
+    return fetch(`http://ipinfo.io/json?token=${token}`, {}).then((response) =>{
         if(response.status === 200){
             return response.json()
         }

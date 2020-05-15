@@ -39,7 +39,6 @@ const game1 = new Hangman('Cat', 3)
 
 const guessesEl = document.querySelector('#guesses')
 const puzzleEl = document.querySelector('#puzzles')
-
 puzzleEl.textContent = game1.getPuzzle()
 guessesEl.textContent = game1.getStatusMessage()
 console.log(game1.remainingGuesses)
